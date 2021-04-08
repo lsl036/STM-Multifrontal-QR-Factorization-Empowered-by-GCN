@@ -24,7 +24,7 @@ library:
 
 #-------------------------------------------------------------------------------
 
-distclean: clean 
+distclean: clean clean_result
 	- cd lib ; rm -r -f libsparsebase.a libsparsecore.a libsparsechol.a libsparsechol_pool.a libsparselu.a libsparseqr.a libsparseqr_numa.a
 
 clean:
