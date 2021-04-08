@@ -20,3 +20,6 @@ during factorization and NUMA affinity optimization improves the factorization e
 each thread on NUMA architecture.
 And in symbolic analysis step, our work combines the graph convolutional network (GCN) to make 
 a self-adapting selection for several current reordering methods.
+
+## Build Procedure
+For building the optimal STM-Multifrontal QR factorization package and verify the conclusions in the paper, please refer README under each directory.
