@@ -1,0 +1,112 @@
+
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+mkfile_dir := $(dir $(mkfile_path))
+
+#--------------------#
+#         GCC        #
+#--------------------#
+CC = gcc -std=c99
+#-march=armv8-a -mtune=tsv110
+
+#--------------------#
+#     Adjust Flag    #
+#--------------------#
+
+TIME_FLAGS = -DPRINT_TIME
+
+# Uncomment the following code to show the assembly and 
+# packaging time of each task stack
+# TIME_FLAGS += -DPRINT_PACK_TIME
+
+NUMA_FLAGS = -DNUMA_ALLOC -DPRINT_PACK_TIME
+
+# If the METIS library is not installed, 
+# please uncomment it. In this case, the METIS 
+# and NESDIS methods cannot be used normally.
+# NMETIS_FLAG = -DNMETIS
+
+# Here you can change the reordering algorithm you need.
+# Uncomment, the corresponding reordering algorithm will be 
+# replaced after compilation
+ANA_METHOD = -DDEFAULT
+# ANA_METHOD := -DONLY_METIS 
+# ANA_METHOD := -DONLY_AMD 
+# ANA_METHOD := -DONLY_COLAMD 
+# ANA_METHOD := -DONLY_NESDIS
+
+#--------------------#
+#       CFLAGS       #
+#--------------------#
+CF = -O2 -fPIC -lpthread
+
+TPSMflag = -DBACKUP -DSETSTACKSIZE
+
+# If you need to test the brute-force method to find 
+# the optimal reordering method, uncomment the following code
+# CF += -Dall_methods_time
+
+# Generate the properties of a sparse matrix and save
+# uncomment the following to enable it
+# CF += -Dwrite_graph
+#--------------------#
+#       INCLUDE      #
+#--------------------#
+I = -I../../include -I../../include/tpsm
+
+C = $(CC) $(CF) $(I)
+
+#------------------------#
+#        ARCH & PRE      #
+#------------------------#
+ARCHDEFS = -DHNU_ARM_LINUX64
+PRECISION = -DDOUBLE_PRECISION
+
+#--------------------#
+#       LDLIBS       #
+#--------------------#
+LDLIBS = -lm -lrt
+
+#--------------------#
+#      LONG DEF      #
+#--------------------#
+LONG_FLAGS = -DDLONG
+
+#--------------------#
+#   CAMD & CCOLAMD   #
+#--------------------#
+# CAMD and CCOLAMD are dependent libraries 
+# that use the NESDIS reordering method
+
+CAMDdir = $(mkfile_dir)CAMD
+
+CCOLAMDdir = $(mkfile_dir)CCOLAMD
+
+LIBNESDIS = $(CCOLAMDdir)/Lib/libccolamd.a $(CAMDdir)/Lib/libcamd.a
+
+INCCAMD = -I$(CAMDdir)/Include
+
+INCCCOL = -I$(CCOLAMDdir)/Include
+
+#--------------------#
+#    Suite_config    #
+#--------------------#
+# The parameters of the original SuiteSparse are the dependent 
+# libraries for the four reordering methods
+
+Suite_configdir = $(mkfile_dir)SuiteSparse_config
+
+INCSuiteBase = -I$(Suite_configdir)
+
+LIBSuite = $(Suite_configdir)/libsuitesparseconfig.a
+
+#--------------------#
+#       L I B        #
+#--------------------#
+
+LDFLAGS = -L$(INSTALL)/lib
+
+LIB =  $(LDFLAGS) -lsparseqr -lsparsechol_pool -lsparsecore -lmetis -lsparsebase -lopenblas -lnuma $(LIBNESDIS) $(LIBSuite) $(LDLIBS)
+
+# When testing NUMA data affinity packaging and assembly time
+# Pleas use LIB_NUMA as library
+LIB_NUMA =  $(LDFLAGS) -lsparseqr_numa -lsparsechol_pool -lsparsecore -lmetis -lsparsebase -lopenblas -lnuma $(LIBNESDIS) $(LIBSuite) $(LDLIBS)
