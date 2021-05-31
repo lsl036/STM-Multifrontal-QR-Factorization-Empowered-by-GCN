@@ -15,6 +15,12 @@ default: all
 #test_qr 
 all: library qrtest
 
+relevant_lib:
+	( cd SuiteSparse_config ; make )
+	( cd CAMD ; make )
+	( cd CCOLAMD ; make )
+	( cd metis-5.1.0 ; make )
+
 library: 
 	( cd src/base ; make )
 	( cd src/core ; make )
@@ -24,11 +30,11 @@ library:
 
 #-------------------------------------------------------------------------------
 
-distclean: clean clean_result
+distclean: clean
 	- cd lib ; rm -r -f libsparsebase.a libsparsecore.a libsparsechol.a libsparsechol_pool.a libsparselu.a libsparseqr.a libsparseqr_numa.a
 
 clean:
-	- rm -r -f chol choltest lutest qrtest lqtest qrtest_numa_data
+	- rm -r -f qrtest qrtest_numa_data
 
 clean_result:
 	- cd Results ; rm -r -f *.txt

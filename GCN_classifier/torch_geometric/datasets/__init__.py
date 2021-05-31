@@ -45,6 +45,7 @@ from .actor import Actor
 from .jodie import JODIEDataset
 from .reorder import Reorder
 from .classorder import Classorder
+from .classorder_test import ClassorderTest
 
 __all__ = [
     'KarateClub',
@@ -95,6 +96,7 @@ __all__ = [
     'JODIEDataset',
     'Reorder',
     'Classorder',
+    'ClassorderTest',
 ]
 
 classes = __all__

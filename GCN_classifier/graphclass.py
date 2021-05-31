@@ -1,3 +1,4 @@
+
 import os.path as osp
 
 import torch
@@ -20,7 +21,7 @@ import time
 
 embed_dim = 10
 batch_size = 4
-num_epochs = 10000
+num_epochs = 5000
 lr=0.0001
 
 path = osp.join(osp.dirname(osp.realpath(__file__)), '.', 'data', 'Classorder')
@@ -93,6 +94,7 @@ class Net(torch.nn.Module):
         # x = exinfo
         x = F.relu(self.lin1(x))
         x = F.dropout(x, p=0.2, training=self.training)
+        # x = F.dropout(x, p=0.5, training=self.training)
         x = F.relu(self.lin2(x))
         x = F.log_softmax(self.lin3(x), dim=-1)
 
@@ -137,15 +139,16 @@ def graphtest(loader):
         # 输出预测的信息
         # graph_id = data.x[:,0].cpu().numpy()
         # for i_t in set(data.x[:,0].cpu().numpy()):
-        # 调整数据集
+
+        # 输出不匹配的数据集
         # val_save = 9999
         # id_print = []
         # for val_t in data.x[:,0].cpu().numpy():
         #     if val_save != val_t:
         #         val_save = val_t
         #         id_print.append( val_save)
-
         # print("id=",id_print,"out=",pred,"y=",data.y)
+
         total_correct += int((pred==data.y).sum())
         total_examples += int((pred==pred).sum())
     # time_end=time.time()

@@ -66,13 +66,14 @@ class Classorder(InMemoryDataset):
         print(data_length)
         data_no = np.arange(0, data_length, 1)
         np.random.shuffle(data_no)
-        train_dt = data_no[0:int(data_length/2)]
-        val_dt = data_no[int(data_length/2):int(data_length*2/3)]
-        test_dt = data_no[int(data_length*2/3):data_length]
 
-        # train_dt = data_no[0:int(data_length*2/3)]
-        # val_dt = data_no[int(data_length*2/3):int(data_length*5/6)]
-        # test_dt = data_no[int(data_length*5/6):data_length]
+        # train_dt = data_no[0:int(data_length/2)]
+        # val_dt = data_no[int(data_length/2):int(data_length*2/3)]
+        # test_dt = data_no[int(data_length*2/3):data_length]
+
+        train_dt = data_no[0:int(data_length*2/3)]
+        val_dt = data_no[int(data_length*2/3):int(data_length*5/6)]
+        test_dt = data_no[int(data_length*5/6):data_length]
 
         # data_length = 100 
         # data_no = np.arange(0, data_length, 1)

@@ -15,5 +15,6 @@ And in symbolic analysis step, our work combines the graph convolutional network
 ## Directory overview
 For building the optimal STM-Multifrontal QR factorization package and verify the conclusions in the paper, please refer README under each directory.
 
-The complete code of optimal STM-Multifrontal QR is placed in the *STMMQR* directory, and the *Mid_version* is the intermediate version to verify the optimization effect of task streaming scheduling mentioned in the paper.
-Directory *GCN_classifier* contains the code and data for training and validating our GCN classifier, our model is directly modified based on the template in the *PyG package*.
+Part of the drawing data shown in the paper is placed in the ***data*** directory.
+The complete code of optimal STM-Multifrontal QR is placed in the ***STMMQR*** directory, and the ***Mid_version*** is the intermediate version to verify the optimization effect of task streaming scheduling mentioned in the paper.
+Directory ***GCN_classifier*** contains the code and data for training and validating our GCN classifier, our model is directly modified based on the template in the ***PyG package***.

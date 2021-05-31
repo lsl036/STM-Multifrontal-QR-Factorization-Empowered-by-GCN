@@ -16,7 +16,7 @@ TIME_FLAGS = -DPRINT_TIME
 
 # Uncomment the following code to show the assembly and 
 # packaging time of each task stack
-# TIME_FLAGS += -DPRINT_PACK_TIME
+TIME_FLAGS += -DPRINT_PACK_TIME
 
 NUMA_FLAGS = -DNUMA_ALLOC -DPRINT_PACK_TIME
 

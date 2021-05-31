@@ -1,27 +1,42 @@
-
+<!-- ```
 getconf GNU_LIBPTHREAD_VERSION
 NPTL 2.17
-
+``` -->
 # STM-Multifrontal QR Factorization Code
-Our optimization measures are mainly concentrated in the numerical factorization phase.
-Typing `make` can generate 5 static lib in *./lib*, and an executable file in root directory named *qrtest*.
+
+## Code Environment
+1. OpenBLAS-0.3.9 required from https://github.com/xianyi/OpenBLAS, which contains the LAPACK library.
+
+2. If you want to use the **metis** method in reordering step, you need to install the metis library. We have already given the source code of **metis-5.1.0** in the STMMQR folder.
+
+3. If you want to use the **NESDIS** method in reordering step, you need to install **CAMD, CCOLAMD** library. We also put the source code of these libraries into STMMQR folder. You can type `make relevant_lib` to install **metis,CAMD,CCOLAMD**.
+
+## Setup
+Typing `make` can generate 5 static lib in *./lib*, and an executable file in root directory named `qrtest`.
+
 Two additional parameters are required to execute the executable file, which are the matrix data set and matrix-ID(Free to fill in). Examples are as follows:
-`./qrtest /data/sme3Dc/sme3Dc.mtx 0`
+`./qrtest ../data/sme3Dc.mtx 0`.
+At this time, *QR_time.txt* will be generated in the *./Results* directory to record the matrix-ID, analysis factorization time, numerical factorization time, and error verification.
+
 The source code of our streaming task mapping framework is in *./src/base/tpsm_**.
 The functions implemented in each subsequent section need to recompile the entire package, type:
+
 ```
 make distclean
 make
 ```
 and then *qrtest* will achieve the result you want.
-The library version under the default *Makefile.option* is the STM-Multifrontal QR factorization with optimal performance (qrtest) that we compared with MKL sparse QR function.
+The library version under the default *Makefile.option* is the STM-Multifrontal QR factorization with optimal performance (qrtest) that we utilize in paper to compared with MKL sparse QR and original SuiteSparseQR.
+
 
 ## Change the algorithm of fill-in reducing reorder
 Enter the *Makefile.option* file and modify the **ANA_METHOD** option to the reordering method you need.
 The **DEFAULT** method is used in the code, which is COLAMD algorithm.
 When you want to replace the reordering method, after modifying the *Makefile.option*, you need to recompile the entire library in the root directory.
-At this time, *QR_time.txt* will be generated in the *./Results* directory to record the matrix-ID, analysis factorization time, numerical factorization time, and error verification.
-We recommend to rename and save the QR factorization of a method after compiling it, such as:`mv qrtest qrtest_default`.
+
+
+**We recommend to rename and save the QR factorization of a method after compiling it, such as:`mv qrtest qrtest_default`.**
+
 Then *qrtest* will run under the reordering method you selected.
 
 ## Brute-force method to find the fewest fill-in elements
@@ -60,7 +75,7 @@ Then recompile the entire library in the root directory.
 `make qrtest` can get the executable file without NUMA data affinity.
 `make qrtest_numa_data` can get the executable file with NUMA data affinity.
 Then running *qrtest* and *qrtest_numa_data* will show the time of assembly and packaging.
-Typically,`./qrtest /data/sme3Dc/sme3Dc.mtx 0` and `./qrtest_numa_data /data/sme3Dc/sme3Dc.mtx 0` is the results shown in paper.
+Typically,`./qrtest /data/sme3Dc/sme3Dc.mtx 0` and `./qrtest_numa_data /data/sme3Dc/sme3Dc.mtx 0` can obtain the results of NUMA data affinity shown in paper.
 
 NUMA affinity of data can reduce the time of assembly and packaging.
 However, due to the opacity of the BLAS thread pool, it is difficult for us to control computationally intensive data migration, and the total time will increase slightly.
