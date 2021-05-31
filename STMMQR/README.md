@@ -12,6 +12,8 @@ NPTL 2.17
 3. If you want to use the **NESDIS** method in reordering step, you need to install **CAMD, CCOLAMD** library. We also put the source code of these libraries into STMMQR folder. You can type `make relevant_lib` to install **metis,CAMD,CCOLAMD**.
 
 ## Setup
+Before compiling the entire library, we hope you can adjust the system settings by modifying `./STMMQR/include/tpsm/tpsm_sysinfo.h` according to the machine architecture.
+
 Typing `make` can generate 5 static lib in *./lib*, and an executable file in root directory named `qrtest`.
 
 Two additional parameters are required to execute the executable file, which are the matrix data set and matrix-ID(Free to fill in). Examples are as follows:
