@@ -10,7 +10,7 @@ LDLIBS = -lm -lrt
 LDFLAGS = -L$(INSTALL)/lib
 
 # LIB_ORI =  $(LDFLAGS) -lopenblas -lsparselu -lsparseqr -lsparsechol -lsparsecore -lsparsebase $(LDLIBS)
-LIB =  $(LDFLAGS) -lopenblas -lsparselu -lsparseqr -lsparsechol_pool -lsparsecore -lsparsebase $(LDLIBS)
+LIB =  $(LDFLAGS) -lsparselu -lsparseqr -lsparsechol_pool -lsparsecore -lsparsebase -llapack -lopenblas $(LDLIBS)
 
 INCHdir = ./include
 

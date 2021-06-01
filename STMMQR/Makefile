@@ -19,7 +19,7 @@ relevant_lib:
 	( cd SuiteSparse_config ; make )
 	( cd CAMD ; make )
 	( cd CCOLAMD ; make )
-	( cd metis-5.1.0 ; make )
+	( cd metis-5.1.0 ; make config ; make; sudo make install)
 
 library: 
 	( cd src/base ; make )

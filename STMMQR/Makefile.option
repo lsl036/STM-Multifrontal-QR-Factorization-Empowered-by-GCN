@@ -37,7 +37,7 @@ ANA_METHOD = -DDEFAULT
 #--------------------#
 #       CFLAGS       #
 #--------------------#
-CF = -O2 -fPIC -lpthread
+CF = -O2 -fPIC 
 
 TPSMflag = -DBACKUP -DSETSTACKSIZE
 
@@ -105,8 +105,8 @@ LIBSuite = $(Suite_configdir)/libsuitesparseconfig.a
 
 LDFLAGS = -L$(INSTALL)/lib
 
-LIB =  $(LDFLAGS) -lsparseqr -lsparsechol_pool -lsparsecore -lmetis -lsparsebase -lopenblas -lnuma $(LIBNESDIS) $(LIBSuite) $(LDLIBS)
+LIB =  $(LDFLAGS) -lsparseqr -lsparsechol_pool -lsparsecore -lmetis -lsparsebase -llapack -lopenblas -lnuma -lpthread $(LIBNESDIS) $(LIBSuite) $(LDLIBS)
 
 # When testing NUMA data affinity packaging and assembly time
 # Pleas use LIB_NUMA as library
-LIB_NUMA =  $(LDFLAGS) -lsparseqr_numa -lsparsechol_pool -lsparsecore -lmetis -lsparsebase -lopenblas -lnuma $(LIBNESDIS) $(LIBSuite) $(LDLIBS)
+LIB_NUMA =  $(LDFLAGS) -lsparseqr_numa -lsparsechol_pool -lsparsecore -lmetis -lsparsebase -llapack -lopenblas -lnuma -lpthread $(LIBNESDIS) $(LIBSuite) $(LDLIBS)
