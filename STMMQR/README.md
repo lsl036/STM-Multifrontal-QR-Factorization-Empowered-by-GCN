@@ -5,19 +5,26 @@ NPTL 2.17
 # STM-Multifrontal QR Factorization Code
 
 ## Code Environment
-1. OpenBLAS-0.3.9 required from https://github.com/xianyi/OpenBLAS, which contains the LAPACK library.
+1. In the NUMA architecture, the **libnuma** library is required
 
-2. If you want to use the **metis** method in reordering step, you need to install the metis library. We have already given the source code of **metis-5.1.0** in the STMMQR folder.
+2. **OpenBLAS-0.3.9** is required. You can obtain it from https://github.com/xianyi/OpenBLAS. **LAPACK** library is also required.
 
-3. If you want to use the **NESDIS** method in reordering step, you need to install **CAMD, CCOLAMD** library. We also put the source code of these libraries into STMMQR folder. You can type `make relevant_lib` to install **metis,CAMD,CCOLAMD**.
+3. If you want to use the **metis** method in reordering step, you need to install the metis library. We have already given the source code of **metis-5.1.0** in the STMMQR folder.
+
+4. If you want to use the **NESDIS** method in reordering step, you need to install **CAMD, CCOLAMD** library. We also put the source code of these libraries into STMMQR folder. You can type `make relevant_lib` to install **metis,CAMD,CCOLAMD**.
 
 ## Setup
 Before compiling the entire library, we hope you can adjust the system settings by modifying `./STMMQR/include/tpsm/tpsm_sysinfo.h` according to the machine architecture.
 
-Typing `make` can generate 5 static lib in *./lib*, and an executable file in root directory named `qrtest`.
+1. Typing`make relevant_lib` can install the relevant libraries that STM-Multifrontal QR needs.
 
-Two additional parameters are required to execute the executable file, which are the matrix data set and matrix-ID(Free to fill in). Examples are as follows:
+2. For default compilation, you can type `make` can generate 5 static lib in *./lib*, and an executable file in root directory named `qrtest`.
+
+Two additional parameters are required to execute the executable file, which are the matrix data set (you can find some in *./data/*) and matrix-ID (Free to fill in). 
+
+Examples are as follows:
 `./qrtest ../data/sme3Dc.mtx 0`.
+
 At this time, *QR_time.txt* will be generated in the *./Results* directory to record the matrix-ID, analysis factorization time, numerical factorization time, and error verification.
 
 The source code of our streaming task mapping framework is in *./src/base/tpsm_**.
