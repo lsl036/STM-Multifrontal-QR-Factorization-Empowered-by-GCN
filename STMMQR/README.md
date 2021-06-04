@@ -16,7 +16,7 @@ NPTL 2.17
 ## Setup
 Before compiling the entire library, we hope you can adjust the system settings by modifying `./STMMQR/include/tpsm/tpsm_sysinfo.h` according to the machine architecture.
 
-1. Typing`make relevant_lib` can install the relevant libraries that STM-Multifrontal QR needs.
+1. Typing`sudo make relevant_lib` can install the relevant libraries that STM-Multifrontal QR requires.
 
 2. For default compilation, you can type `make` can generate 5 static lib in *./lib*, and an executable file in root directory named `qrtest`.
 
