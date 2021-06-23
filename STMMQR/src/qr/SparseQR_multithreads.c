@@ -1,9 +1,13 @@
 /******************************************************************************
- * VERSION: 1.1
- * DATE:    2020年9月27日
- * FILE:    SparseQR_multithreads.c
- * BRIEF:   并行函数
- * FUNCTION: multithreads函数，用于将ntasks加入线程池中并行执行，实现任务级并行
+ * SPQR, Copyright 2008-2016 by Timothy A. Davis.
+ * All Rights Reserved.
+ * SPQR is available under alternate licenses, contact T. Davis for details.
+ * Availability:
+
+    http://www.suitesparse.com
+
+ * ChangeLog: Calling TPSM thread pool (thread NUMA affinity) to achieve 
+              parallel factorization.
  *****************************************************************************/
 
 #include"SparseQR.h"

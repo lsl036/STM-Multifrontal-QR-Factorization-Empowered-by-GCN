@@ -1,9 +1,15 @@
 /******************************************************************************
- * VERSION: 1.1
- * DATE:    2020年9月27日
- * FILE:    SparseQR_factorize.c
- * BRIEF:   数值分解
- * FUNCTION: factorize函数，用来计算QR分解的数值分解部分，可以通过线程池任务级并行
+ * SPQR, Copyright 2008-2016 by Timothy A. Davis.
+ * All Rights Reserved.
+ * SPQR is available under alternate licenses, contact T. Davis for details.
+ * Availability:
+
+    http://www.suitesparse.com
+
+ * ChangeLog: 1. Merged a part of QR numerical factorization functions, 
+              and implemented data affinity in get_Work.
+              2. Modified the parallel mode of the nodes in task tree 
+              (in qr_factorize).
  *****************************************************************************/
 #ifdef PRINT_TIME
 #include <sys/time.h>

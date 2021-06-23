@@ -1,9 +1,13 @@
 /******************************************************************************
- * VERSION: 1.1
- * DATE:    2020年9月27日
- * FILE:    SparseQR_analyze.c
- * BRIEF:   符号分解
- * FUNCTION: analyze函数，用来计算矩阵的填充简化排序，符号分解和预估数值分解计算量
+ * SPQR, Copyright 2008-2016 by Timothy A. Davis.
+ * All Rights Reserved.
+ * SPQR is available under alternate licenses, contact T. Davis for details.
+ * Availability:
+
+    http://www.suitesparse.com
+
+ * ChangeLog: Merged a part of QR symbolic analysis module functions, 
+              and adjusted the blocking parameters.
  *****************************************************************************/
 
 /*给定一个稀疏m×n矩阵a的非零模式，分析它以进行后续的数值分解。
