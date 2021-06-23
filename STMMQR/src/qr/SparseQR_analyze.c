@@ -6,6 +6,8 @@
 
     http://www.suitesparse.com
 
+ * Used by permission.
+ 
  * ChangeLog: Merged a part of QR symbolic analysis module functions, 
               and adjusted the blocking parameters.
  *****************************************************************************/

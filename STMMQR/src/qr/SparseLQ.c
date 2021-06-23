@@ -1,9 +1,15 @@
 /******************************************************************************
- * VERSION: 1.1
- * DATE:    2020年9月27日
- * FILE:    SparseLQ.c
- * BRIEF:   LQ 分解函数
- * FUNCTION: SparseLQ函数，用来计算矩阵的LQ分解，并保留Household变换
+ * SPQR, Copyright 2008-2016 by Timothy A. Davis.
+ * All Rights Reserved.
+ * SPQR is available under alternate licenses, contact T. Davis for details.
+ * Availability:
+
+    http://www.suitesparse.com
+
+ * Used by permission.
+ 
+ * ChangeLog: Include some auxiliary interfaces of QR fac and add an extra 
+              Sparse LQ factorization interface.
  *****************************************************************************/
 /*******************************
  *         INCLUDE

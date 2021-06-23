@@ -6,6 +6,8 @@
 
     http://www.suitesparse.com
 
+ * Used by permission.
+ 
  * ChangeLog: 1. Merged a part of QR numerical factorization functions, 
               and implemented data affinity in get_Work.
               2. Modified the parallel mode of the nodes in task tree 

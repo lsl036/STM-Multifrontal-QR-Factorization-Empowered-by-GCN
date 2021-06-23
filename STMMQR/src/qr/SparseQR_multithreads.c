@@ -6,6 +6,8 @@
 
     http://www.suitesparse.com
 
+ * Used by permission.
+ 
  * ChangeLog: Calling TPSM thread pool (thread NUMA affinity) to achieve 
               parallel factorization.
  *****************************************************************************/

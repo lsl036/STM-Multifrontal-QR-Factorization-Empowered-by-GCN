@@ -6,6 +6,8 @@
 
     http://www.suitesparse.com
 
+ * Used by permission.
+ 
  * ChangeLog: Merged a part of QR decomposition module functions, 
               and Modified the selection of reordering method in qr_1colamd
  *****************************************************************************/
