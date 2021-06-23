@@ -23,7 +23,7 @@ Before compiling the entire library, we hope you can adjust the system settings 
 Two additional parameters are required to execute the executable file, which are the matrix data set (you can find some in *./data/*) and matrix-ID (Free to fill in). 
 
 Examples are as follows:
-`./qrtest ../data/sme3Dc.mtx 0`.
+`./qrtest ../Data/sme3Dc.mtx 0`.
 
 At this time, *QR_time.txt* will be generated in the *./Results* directory to record the matrix-ID, analysis factorization time, numerical factorization time, and error verification.
 
@@ -70,7 +70,7 @@ When `cc->SPQR_grain = 1`, the QR factorization is the single-thread mode in tre
 We provide an additional code package HNUSparse (Mid-term version of a project), which uses the streaming task scheduling framework and does not implement thread affinity (due to different interfaces and limited time, we did not integrate it into one package).
 You can just type `make` at the root directory, then you will get an executable file named `qrtest`.
 The specifications of the test function are as follows (ID number is not required):
-`./qrtest /data/sme3Dc/sme3Dc.mtx`, which is corresponding to the *Mid* shown in figure.
+`./qrtest ../Data/sme3Dc.mtx`, which is corresponding to the *Mid* shown in figure.
 
 The data set we used and our test results are summarized in the table *STM-MQR.xlsx* in the root directory.
 The *GCNdata_408.txt* save the 408 data sets we selected in the GCN classifier experiment.
@@ -84,7 +84,7 @@ Then recompile the entire library in the root directory.
 `make qrtest` can get the executable file without NUMA data affinity.
 `make qrtest_numa_data` can get the executable file with NUMA data affinity.
 Then running *qrtest* and *qrtest_numa_data* will show the time of assembly and packaging.
-Typically,`./qrtest /data/sme3Dc/sme3Dc.mtx 0` and `./qrtest_numa_data /data/sme3Dc/sme3Dc.mtx 0` can obtain the results of NUMA data affinity shown in paper.
+Typically,`./qrtest ../Data/sme3Dc.mtx 0 0` and `./qrtest_numa_data ../Data/sme3Dc.mtx 0` can obtain the results of NUMA data affinity shown in paper.
 
 NUMA affinity of data can reduce the time of assembly and packaging.
 However, due to the opacity of the BLAS thread pool, it is difficult for us to control computationally intensive data migration, and the total time will increase slightly.
