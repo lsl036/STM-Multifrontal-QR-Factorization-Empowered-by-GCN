@@ -80,11 +80,11 @@ The *GCNdata_408.txt* save the 408 data sets we selected in the GCN classifier e
 ## Compared the assembly and packaging time
 If you want to view the time of each stack assembling and packaging data in numerical factorization, enter the *Makefile.option* file and modify the **TIME_FLAGS** option.
 Uncomment the option `TIME_FLAGS += -DPRINT_PACK_TIME` ( By default, due to too many tasks, we will turn off this option ).
-Then recompile the entire library in the root directory.
+Then type `make` to recompile the entire library in the root directory.
 `make qrtest` can get the executable file without NUMA data affinity.
 `make qrtest_numa_data` can get the executable file with NUMA data affinity.
 Then running *qrtest* and *qrtest_numa_data* will show the time of assembly and packaging.
-Typically,`./qrtest ../Data/sme3Dc.mtx 0 0` and `./qrtest_numa_data ../Data/sme3Dc.mtx 0` can obtain the results of NUMA data affinity shown in paper.
+Typically,`./qrtest ../Data/sme3Dc.mtx 0` and `./qrtest_numa_data ../Data/sme3Dc.mtx 0` can obtain the results of NUMA data affinity shown in paper.
 
 NUMA affinity of data can reduce the time of assembly and packaging.
 However, due to the opacity of the BLAS thread pool, it is difficult for us to control computationally intensive data migration, and the total time will increase slightly.
