@@ -161,8 +161,8 @@ int main (int argc, char* argv[])
         
         for (i = 0; i < cycleNum; ++i) {
             QR = SparseQR (QR_ORDERING_DEFAULT, tol, A, cc, str2) ;
-            //QR = SparseQR (QR_ORDERING_BEST, tol, A, cc, str2) ;
-            //QR = SparseQR (QR_ORDERING_GIVEN, tol, A, cc, str2) ;
+            // QR_ORDERING_DEFAULT, QR_ORDERING_AMD, QR_ORDERING_COLAMD, 
+            // QR_ORDERING_ONLYMETIS, QR_ORDERING_NESDIS
         }
         gettimeofday(&tv, NULL);
         timeEnd = tv.tv_sec + tv.tv_usec / 1000000.0;

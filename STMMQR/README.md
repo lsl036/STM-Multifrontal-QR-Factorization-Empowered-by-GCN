@@ -39,17 +39,17 @@ The library version under the default *Makefile.option* is the STM-Multifrontal 
 
 
 ## Change the algorithm of fill-in reducing reorder
-Enter the *Makefile.option* file and modify the **ANA_METHOD** option to the reordering method you need.
+<!-- Enter the *Makefile.option* file and modify the **ANA_METHOD** option to the reordering method you need.
 The **DEFAULT** method is used in the code, which is COLAMD algorithm.
-When you want to replace the reordering method, after modifying the *Makefile.option*, you need to recompile the entire library in the root directory.
-
+When you want to replace the reordering method, after modifying the *Makefile.option*, you need to recompile the entire library in the root directory. -->
+You can change the reordering method of Multifrontal QR factorization by modifying the first parameter of the function on line 163 in *./test/qrtest.c*, and the optional options are placed in the comments below it.
 
 **We recommend to rename and save the QR factorization of a method after compiling it, such as:`mv qrtest qrtest_default`.**
 
 Then *qrtest* will run under the reordering method you selected.
 
 ## Brute-force method to find the fewest fill-in elements
-Enter the *Makefile.option* file and modify the **CF** option, uncomment code : `CF += -Dall_methods_time`, then recompile the entire library in the root directory.
+Enter the *Makefile.option* file and modify the **CF** option, uncomment code : `CF += -Dall_methods_time`, then recompile the entire library in the root directory by `make distclean` and `make`.
 In this method, *Brute-force-fill.txt* will be generated in the *./Results* directory to record the number of filling elements of AMD, COLAMD, METIS and NESDIS method.
 *Brute_force_time.txt* will be generated in the *./Results* directory to record the time cost of the brute-force method.
 Then *qrtest* will run under the brute-force method to select reordering method.
