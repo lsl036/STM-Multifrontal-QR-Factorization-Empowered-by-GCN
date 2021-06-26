@@ -47,6 +47,7 @@ You can change the reordering method of Multifrontal QR factorization by modifyi
 **We recommend to rename and save the QR factorization of a method after compiling it, such as:`mv qrtest qrtest_default`.**
 
 Then *qrtest* will run under the reordering method you selected.
+After compiling the source code, you can type `./test.sh` to run all sparse matrix dataset in *\Data* to test performance.
 
 ## Brute-force method to find the fewest fill-in elements
 Enter the *Makefile.option* file and modify the **CF** option, uncomment code : `CF += -Dall_methods_time`, then recompile the entire library in the root directory by `make distclean` and `make`.
