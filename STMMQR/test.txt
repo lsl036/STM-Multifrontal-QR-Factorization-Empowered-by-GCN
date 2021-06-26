@@ -1,0 +1,16 @@
+../Data/dwt_992.mtx	0
+../Data/lns_3937.mtx	1
+../Data/bcsstk14.mtx	2
+../Data/epb1.mtx	3
+../Data/reorientation_8.mtx	4
+../Data/sme3Dc.mtx	5
+../Data/3D_51448_3D.mtx	6
+../Data/cvxqp3.mtx	7
+../Data/t2d_q9.mtx	8
+../Data/xenon1.mtx	9
+../Data/bayer10.mtx	10
+../Data/Zd_Jac2_db.mtx	11
+../Data/ex18.mtx	12
+../Data/c-67.mtx	13
+../Data/language.mtx	14
+../Data/mycielskian13.mtx	15
