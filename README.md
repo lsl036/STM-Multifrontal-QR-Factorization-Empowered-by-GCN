@@ -6,9 +6,9 @@ In this work, a graph convolutional network (GCN) for adaptively selecting the o
 Using our GCN adaptive classifier, the average numerical factorization time is reduced by 20.78% compared with the default approach, and the additional memory overhead is only about 4% higher than that of the previous method.
 
 Moreover, for **numerical factorization**, an optimized tasks stream parallel processing strategy is proposed and a more efficient computing task mapping framework for NUMA architecture is adopted in this paper, which we called STM-Multifrontal QR factorization.
-On Kunpeng 920 processors with 4 NUMA nodes, the performance of our method is equal to or higher than that of MKL library on Intel Xeon 6248 for nearly 80% matrices of the University of Florida Sparse Matrix Collection.
+On Taishan Server ( 120 processors, 4 NUMA nodes), the performance of our method is equal to or higher than that of MKL library on Intel Xeon 6248 for nearly 80% matrices of the University of Florida Sparse Matrix Collection.
 
-In this repository, we offer an highly optimized Multifrontal QR factorization algorithm in directory *STMMQR* named STM-Multifrontal QR.
+In this repository, we offer an highly optimized Multifrontal QR factorization algorithm in directory *STMMQR* named STM-Multifrontal QR. It is highly recommended to verify our optimization performance on a multi-NUMA multi-processor architecture.
 In numerical phase, the task mapping framework with stream processing strategy improves parallelism during factorization and NUMA affinity optimization improves the factorization efficiency of each thread on NUMA architecture.
 And in symbolic analysis step, our work combines the graph convolutional network (GCN) to make a self-adapting selection for several current reordering methods, whose code is stored in the directory *GCN_classifier*.
 

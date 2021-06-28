@@ -42,5 +42,5 @@ The eight datasets shown in paper Fig.12 are stored in ./GCN_classifier/data/Cla
 
 You can run `python graphclass.py` to train the model and verify the inference results of the GCN classifier.
 
-Then run `python testgraph.py` to predict the classifications of eight datasets. 
+Then run `python testgraph.py` to predict the classifications of eight datasets. In order to verify its effect, we recorded the predicted results and substituted them back into *STMMQR* to select the corresponding reordering method for testing.
 
