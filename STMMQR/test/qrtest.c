@@ -151,6 +151,22 @@ int main (int argc, char* argv[])
     chunk_getSettings(32, 5000, 4, 4);
     Relaxfactor_setting (n, SparseCore_nnz (A, cc), RELAX_FOR_QR, cc);
 
+    long ordering = (argc < 4 ? QR_ORDERING_DEFAULT : atoi(argv[3]));
+    // AMD -- 5  ; COLAMD -- 2; METIS -- 11; NESDIS -- 6
+    switch (ordering)
+    {
+        case 0:
+            ordering = QR_ORDERING_AMD; break;
+        case 1:
+            ordering = QR_ORDERING_COLAMD; break;
+        case 2:
+            ordering = QR_ORDERING_ONLYMETIS; break;
+        case 3:
+            ordering = QR_ORDERING_NESDIS; break;
+        default:
+            ordering = QR_ORDERING_DEFAULT;
+    }
+
     if (A->xtype == SPARSE_REAL)
     {
         SparseQR_factorization *QR ;
@@ -160,7 +176,7 @@ int main (int argc, char* argv[])
         timeStart = tv.tv_sec + tv.tv_usec / 1000000.0;
         
         for (i = 0; i < cycleNum; ++i) {
-            QR = SparseQR (QR_ORDERING_DEFAULT, tol, A, cc, str2) ;
+            QR = SparseQR (ordering, tol, A, cc, str2) ;
             // QR_ORDERING_DEFAULT, QR_ORDERING_AMD, QR_ORDERING_COLAMD, 
             // QR_ORDERING_ONLYMETIS, QR_ORDERING_NESDIS
         }

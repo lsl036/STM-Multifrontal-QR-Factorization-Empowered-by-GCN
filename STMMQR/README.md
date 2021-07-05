@@ -42,12 +42,15 @@ The library version under the default *Makefile.option* is the STM-Multifrontal 
 <!-- Enter the *Makefile.option* file and modify the **ANA_METHOD** option to the reordering method you need.
 The **DEFAULT** method is used in the code, which is COLAMD algorithm.
 When you want to replace the reordering method, after modifying the *Makefile.option*, you need to recompile the entire library in the root directory. -->
-You can change the reordering method of Multifrontal QR factorization by modifying the first parameter of the function on line 163 in *./test/qrtest.c*, and the optional options are placed in the comments below it.
+You can change the reordering method of Multifrontal QR factorization by adding another additional input parameter ( neglect this parameter for the default method). 
 
-**We recommend to rename and save the QR factorization of a method after compiling it, such as:`mv qrtest qrtest_default`.**
+For example: `./qrtest ../Data/sme3Dc.mtx 0 1`. The first number *0* is the graph-ID of this matrix, and the second number *1* is the reordering method you choose. 
+In this question, **0** corresponds to AMD; **1** corresponds to COLAMD; **2** corresponds to METIS; and **3** corresponds to NESDIS.
+
+<!-- **We recommend to rename and save the QR factorization of a method after compiling it, such as:`mv qrtest qrtest_default`.** -->
 
 Then *qrtest* will run under the reordering method you selected.
-After compiling the source code, you can type `./test.sh` to run all sparse matrix dataset in *\Data* to test performance.
+After compiling the source code, you can type `./test.sh` to run all sparse matrix dataset in *\Data* under the default reordering method to test performance.
 
 ## Brute-force method to find the fewest fill-in elements
 Enter the *Makefile.option* file and modify the **CF** option, uncomment code : `CF += -Dall_methods_time`, then recompile the entire library in the root directory by `make distclean` and `make`.
