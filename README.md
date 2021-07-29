@@ -1,4 +1,4 @@
-# STM-Multifrontal-QR-factorization-combined-with-GCN
+# STM-Multifrontal-QR-factorization-Empowered-by-GCN
 
 Multifrontal QR algorithm, which consists of symbolic analysis and numerical factorization, is a high-performance algorithm for orthogonal factorizing sparse matrix.
 
