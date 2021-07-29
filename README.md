@@ -1,5 +1,5 @@
 # STM-Multifrontal-QR-factorization-Empowered-by-GCN
-
+[![DOI](https://zenodo.org/badge/355837565.svg)](https://zenodo.org/badge/latestdoi/355837565)
 Multifrontal QR algorithm, which consists of symbolic analysis and numerical factorization, is a high-performance algorithm for orthogonal factorizing sparse matrix.
 
 In this work, a graph convolutional network (GCN) for adaptively selecting the optimal reordering algorithm is proposed in **symbolic analysis**.
