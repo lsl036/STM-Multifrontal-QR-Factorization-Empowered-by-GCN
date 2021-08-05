@@ -18,6 +18,7 @@
 #endif
 #include "SparseQR.h"
 #include "tpsm.h"
+#include "tpsm_sysinfo.h"
 
 // #define FCHUNK 64       // 32 Householder 块规模
 // #define SMALL 5000
@@ -151,7 +152,7 @@ qr_work *get_Work
     for (Long stack = 0 ; stack < ns ; stack++)
     {
         #ifdef NUMA_ALLOC
-            numa_node_rank = stack % 4;
+            numa_node_rank = stack % TPSM_NUMANODES;
             Work [stack].Fmap = (Long *) SparseCore_malloc_onnode (n, sizeof (Long), numa_node_rank, cc) ;
             Work [stack].Cmap = (Long *) SparseCore_malloc_onnode (maxfn, sizeof(Long), numa_node_rank, cc);
             Work [stack].WTwork =
@@ -423,7 +424,7 @@ qr_numeric *qr_factorize
             Stack_size [stack] = stacksize ;
             // 给 ns 个栈开辟空间， 这里也可以分NUMA 开辟空间
             #ifdef NUMA_ALLOC
-                numa_node_rank = stack % 4;
+                numa_node_rank = stack % TPSM_NUMANODES;
                 Stack = (double *) SparseCore_malloc_onnode (stacksize, sizeof (double), numa_node_rank, cc) ;
                 Work [stack].numa_node_rank = numa_node_rank;
             #else

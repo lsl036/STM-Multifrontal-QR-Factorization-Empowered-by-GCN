@@ -4,6 +4,7 @@
 #include <float.h>
 #include <stdio.h>
 #include "tpsm.h"
+#include "tpsm_sysinfo.h"
 #include <math.h>
 #define Long Sparse_long
 
@@ -140,7 +141,7 @@ int main (int argc, char* argv[])
     }
     tol = 20 * ((double) A->nrow + (double) A->ncol) * DBL_EPSILON * max2Norm;
 
-    int CORE = 128;
+    int CORE = TPSM_SYSCORES;
     cc->SPQR_grain = (double) (CORE * 2);
     // cc->SPQR_grain = 1;
     cc->status = SPARSE_OK ;
