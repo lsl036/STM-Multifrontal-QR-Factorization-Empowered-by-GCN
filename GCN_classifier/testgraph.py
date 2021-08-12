@@ -87,7 +87,7 @@ class Net(torch.nn.Module):
 # model = torch.load('./models/model_nodecluster_ep270_0.0812.torch', map_location=lambda storage, loc: storage)
 
 device = torch.device('cuda:0')
-model = torch.load('./models/graphmodel_ep4500.torch')
+model = torch.load('./models/graphmodel_ep5000.torch')
 
 # model = Net().to(device)
 print(model)
