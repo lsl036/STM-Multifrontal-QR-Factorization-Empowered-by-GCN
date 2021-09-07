@@ -19,3 +19,6 @@ For building the optimal STM-Multifrontal QR factorization package and verify th
 Part of the drawing data shown in the paper is placed in the ***Data*** directory.
 The complete code of optimal STM-Multifrontal QR is placed in the ***STMMQR*** directory, and the ***Mid_version*** is the intermediate version to verify the optimization effect of task streaming scheduling mentioned in the paper.
 Directory ***GCN_classifier*** contains the code and data for training and validating our GCN classifier, our model is directly modified based on the template in the ***PyG package***.
+
+## Notice
+Before compiling the **STMMQR** library, we hope you can adjust the system settings by modifying *./STMMQR/include/tpsm/tpsm_sysinfo.h* according to the machine architecture. Otherwise, the function may not execute correctly.
