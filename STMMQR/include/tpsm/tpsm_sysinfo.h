@@ -15,9 +15,9 @@
  *****************************************************************************/
 
 //-------CPU------->
-#define TPSM_CPUSOCKET 		(2) 		//2个cpu_socket (2块cpu)
-#define TPSM_NUMANODES 		(4) 		//4个numa结点
-#define TPSM_SYSCORES 		(128)  		//128核
+#define TPSM_CPUSOCKET 		(2) 		// 2 CPU SOCKETS
+#define TPSM_NUMANODES 		(4) 		// 4 NUMA NODES
+#define TPSM_SYSCORES 		(128)  		// 128 CORES
 
 //-------Cache------->
 #define TPSM_L1DOUBLE 		(8192) 		//L1cache可容纳双精度浮点数的个数为：8192(个)

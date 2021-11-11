@@ -17,8 +17,17 @@ And in symbolic analysis step, our work combines the graph convolutional network
 For building the optimal STM-Multifrontal QR factorization package and verify the conclusions in the paper, please refer README under each directory.
 
 Part of the drawing data shown in the paper is placed in the ***Data*** directory.
-The complete code of optimal STM-Multifrontal QR is placed in the ***STMMQR*** directory, and the ***Mid_version*** is the intermediate version to verify the optimization effect of task streaming scheduling mentioned in the paper.
-Directory ***GCN_classifier*** contains the code and data for training and validating our GCN classifier, our model is directly modified based on the template in the ***PyG package***.
+The complete code of optimal STM-Multifrontal QR is placed in the ***STMMQR*** directory.
+Directory ***GCN_classifier*** contains the code and data for training and validating our GCN classifier, our model is directly modified based on the template of ***PyG package***.
 
 ## Notice
-Before compiling the **STMMQR** library, we hope you can adjust the system settings by modifying *./STMMQR/include/tpsm/tpsm_sysinfo.h* according to the machine architecture. Otherwise, the function may not execute correctly.
+Before compiling the **STMMQR** library, we hope you can adjust the system settings by modifying *./STMMQR/include/tpsm/tpsm_sysinfo.h* according to the machine architecture :
+
+```c
+//-------CPU------->
+#define TPSM_CPUSOCKET 		(2) 		//2 CPU sockets
+#define TPSM_NUMANODES 		(4) 		//4 NUMA NODES
+#define TPSM_SYSCORES 		(128)  		//128 CORES
+```
+
+ Otherwise, the thread-pool function may not execute correctly.
