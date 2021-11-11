@@ -21,13 +21,9 @@ The complete code of optimal STM-Multifrontal QR is placed in the ***STMMQR*** d
 Directory ***GCN_classifier*** contains the code and data for training and validating our GCN classifier, our model is directly modified based on the template of ***PyG package***.
 
 ## Notice
-Before compiling the **STMMQR** library, we hope you can adjust the system settings by modifying *./STMMQR/include/tpsm/tpsm_sysinfo.h* according to the machine architecture :
+For details about operations on ***STMMQR*** and ***GCN_classifier***, please see **README** in their respective folders.
 
-```c
-//-------CPU------->
-#define TPSM_CPUSOCKET 		(2) 		//2 CPU sockets
-#define TPSM_NUMANODES 		(4) 		//4 NUMA NODES
-#define TPSM_SYSCORES 		(128)  		//128 CORES
-```
+Please note that GCN and STM-MQR are **not really combined** due to the lack of accuracy of GCN automatic classifier and the extra cost of attributes generation. And we hope that our work can inspire more researchers to combine graph convolutional network with sparse matrices problems to form more practical and valuable work.
 
- Otherwise, the thread-pool function may not execute correctly.
+Thank you very much!
+

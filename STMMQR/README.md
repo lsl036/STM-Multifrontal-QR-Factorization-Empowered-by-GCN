@@ -7,14 +7,14 @@ NPTL 2.17
 ## Code Environment
 1. In the NUMA architecture, the **libnuma** library is required
 
-2. **OpenBLAS-0.3.9** is required. You can obtain it from https://github.com/xianyi/OpenBLAS. **LAPACK** library is also required.
+2. **OpenBLAS-0.3.9** is recomended. You can obtain it from https://github.com/xianyi/OpenBLAS. **LAPACK** library is also required.
 
 3. If you want to use the **metis** method in reordering step, you need to install the metis library. We have already given the source code of **metis-5.1.0** in the STMMQR folder.
 
-4. If you want to use the **NESDIS** method in reordering step, you need to install **CAMD, CCOLAMD** library. We also put the source code of these libraries into STMMQR folder. You can type `make relevant_lib` to install **metis,CAMD,CCOLAMD**.
+4. If you want to use the **NESDIS** method in reordering step, you need to install **CAMD, CCOLAMD** library. We also put the source code of these libraries into STMMQR folder. You can type `sudo make relevant_lib` to install **metis,CAMD,CCOLAMD** on your platform.
 
 ## Setup
-Before compiling the entire library, we hope you can adjust the system settings by modifying `./STMMQR/include/tpsm/tpsm_sysinfo.h` according to the machine architecture.
+We already supplemented script that automatically detect NUMA information of your platform. Now you can type `make numadetect` to generate `./include/tpsm/Numainfo.h`. This step is included in `make` instruction.
 
 1. Typing`sudo make relevant_lib` can install the relevant libraries that STM-Multifrontal QR requires.
 
@@ -27,8 +27,7 @@ Examples are as follows:
 
 At this time, *QR_time.txt* will be generated in the *./Results* directory to record the matrix-ID, analysis factorization time, numerical factorization time, and error verification.
 
-The source code of our streaming task mapping framework is in *./src/base/tpsm_**.
-The functions implemented in each subsequent section need to recompile the entire package, type:
+The functions implemented in each subsequent section need to recompile the entire package, by typing:
 
 ```
 make distclean
@@ -42,7 +41,7 @@ The library version under the default *Makefile.option* is the STM-Multifrontal 
 <!-- Enter the *Makefile.option* file and modify the **ANA_METHOD** option to the reordering method you need.
 The **DEFAULT** method is used in the code, which is COLAMD algorithm.
 When you want to replace the reordering method, after modifying the *Makefile.option*, you need to recompile the entire library in the root directory. -->
-You can change the reordering method of Multifrontal QR factorization by adding another additional input parameter ( neglect this parameter for the default method). 
+You can change the reordering method of Multifrontal QR factorization by adding another additional input parameter (neglect this parameter for the default method). 
 
 For example: `./qrtest ../Data/sme3Dc.mtx 0 1`. The first number *0* is the graph-ID of this matrix, and the second number *1* is the reordering method you choose. 
 In this question, **0** corresponds to AMD; **1** corresponds to COLAMD; **2** corresponds to METIS; and **3** corresponds to NESDIS.
@@ -50,16 +49,17 @@ In this question, **0** corresponds to AMD; **1** corresponds to COLAMD; **2** c
 <!-- **We recommend to rename and save the QR factorization of a method after compiling it, such as:`mv qrtest qrtest_default`.** -->
 
 Then *qrtest* will run under the reordering method you selected.
-After compiling the source code, you can type `./test.sh` to run all sparse matrix dataset in *\Data* under the default reordering method to test performance.
+After compiling the source code, you can type `./test.sh` to run all sparse matrix dataset in */Data* under the default reordering method to test performance.
 
 ## Brute-force method to find the fewest fill-in elements
-Enter the *Makefile.option* file and modify the **CF** option, uncomment code : `CF += -Dall_methods_time`, then recompile the entire library in the root directory by `make distclean` and `make`.
+Enter the *Makefile.option* file and modify the **CF** option, uncomment code : `CF += -Dall_methods_time`, then recompile the entire library in the root directory by `make distclean & make`.
 In this method, *Brute-force-fill.txt* will be generated in the *./Results* directory to record the number of filling elements of AMD, COLAMD, METIS and NESDIS method.
 *Brute_force_time.txt* will be generated in the *./Results* directory to record the time cost of the brute-force method.
 Then *qrtest* will run under the brute-force method to select reordering method.
 
 ## Generate features of GCN
-Enter the *Makefile.option* file and modify the **CF** option, uncomment code : `CF += -Dwrite_graph`, then recompile the entire library in the root directory.
+Enter the *Makefile.option* file and modify the **CF** option, uncomment code : `CF += -Dwrite_graph`, then recompile the entire library (`make distclean & make`) in the root directory.
+
 In this case, the test function will not perform factorization, but will only calculate the attributes we need during the matrix reading process.
 *QR_Edge.txt*, *QR_Node.txt* and *QR_exinfo.txt* will be generated in this mode.
 *QR_Edge.txt* records graph-ID, row_index, column_index and values.
@@ -71,10 +71,10 @@ Then *qrtest* will run just for generate GCN input dataset.
 Change the `CORE` and `cc->SPQR_grain` in *./test/qrtest.c* to adjust the tree-level parallelism.
 When `cc->SPQR_grain = 1`, the QR factorization is the single-thread mode in tree-level (still can parallel in BLAS).
 
-We provide an additional code package HNUSparse (Mid-term version of a project), which uses the streaming task scheduling framework and does not implement thread affinity (due to different interfaces and limited time, we did not integrate it into one package).
+We provide an additional code package HNUSparse (Mid-term version of a project, in **github branch Aug_origin**), which uses the streaming task scheduling framework and does not implement thread affinity (due to different interfaces and limited time, we did not integrate it into one package).
 You can just type `make` at the root directory, then you will get an executable file named `qrtest`.
 The specifications of the test function are as follows (ID number is not required):
-`./qrtest ../Data/sme3Dc.mtx`, which is corresponding to the *Mid* shown in figure.
+`./qrtest ../Data/sme3Dc.mtx`, which is corresponding to the *Mid* shown in the figures of our paper.
 
 The data set we used and our test results are summarized in the table *STM-MQR.xlsx* in the root directory.
 The *GCNdata_408.txt* save the 408 data sets we selected in the GCN classifier experiment.
