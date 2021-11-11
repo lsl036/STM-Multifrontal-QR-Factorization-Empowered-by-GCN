@@ -13,7 +13,10 @@ INCLUDE = -I$(INCHdir) -I$(INCHdir)/tpsm
 
 default: all
 #test_qr 
-all: library qrtest
+all: numadetect library qrtest
+
+numadetect:
+	./get_plat.sh > ./include/tpsm/Numainfo.h
 
 relevant_lib:
 	( cd SuiteSparse_config ; make )

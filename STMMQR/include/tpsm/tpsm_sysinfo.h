@@ -15,9 +15,10 @@
  *****************************************************************************/
 
 //-------CPU------->
-#define TPSM_CPUSOCKET 		(2) 		// 2 CPU SOCKETS
-#define TPSM_NUMANODES 		(4) 		// 4 NUMA NODES
-#define TPSM_SYSCORES 		(128)  		// 128 CORES
+// #define TPSM_CPUSOCKET 		(2) 		// 2 CPU SOCKETS
+// #define TPSM_NUMANODES 		(4) 		// 4 NUMA NODES
+// #define TPSM_SYSCORES 		(128)  		// 128 CORES
+#include"Numainfo.h"
 
 //-------Cache------->
 #define TPSM_L1DOUBLE 		(8192) 		//L1cache可容纳双精度浮点数的个数为：8192(个)
