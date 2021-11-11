@@ -17,8 +17,13 @@ And in symbolic analysis step, our work combines the graph convolutional network
 For building the optimal STM-Multifrontal QR factorization package and verify the conclusions in the paper, please refer README under each directory.
 
 Part of the drawing data shown in the paper is placed in the ***Data*** directory.
-The complete code of optimal STM-Multifrontal QR is placed in the ***STMMQR*** directory, and the ***Mid_version*** is the intermediate version to verify the optimization effect of task streaming scheduling mentioned in the paper.
-Directory ***GCN_classifier*** contains the code and data for training and validating our GCN classifier, our model is directly modified based on the template in the ***PyG package***.
+The complete code of optimal STM-Multifrontal QR is placed in the ***STMMQR*** directory.
+Directory ***GCN_classifier*** contains the code and data for training and validating our GCN classifier, our model is directly modified based on the template of ***PyG package***.
 
 ## Notice
-Before compiling the **STMMQR** library, we hope you can adjust the system settings by modifying *./STMMQR/include/tpsm/tpsm_sysinfo.h* according to the machine architecture. Otherwise, the function may not execute correctly.
+For details about operations on ***STMMQR*** and ***GCN_classifier***, please see **README** in their respective folders.
+
+Please note that GCN and STM-MQR are **not really combined** due to the lack of accuracy of GCN automatic classifier and the extra cost of attributes generation. And we hope that our work can inspire more researchers to combine graph convolutional network with sparse matrices problems to form more practical and valuable work.
+
+Thank you very much!
+

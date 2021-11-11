@@ -13,7 +13,10 @@ INCLUDE = -I$(INCHdir) -I$(INCHdir)/tpsm
 
 default: all
 #test_qr 
-all: library qrtest
+all: numadetect library qrtest
+
+numadetect:
+	./get_plat.sh > ./include/tpsm/Numainfo.h
 
 relevant_lib:
 	( cd SuiteSparse_config ; make )
@@ -49,9 +52,6 @@ optset:
 #--------------------#
 #  使用原来的openblas #
 #--------------------#
-choltest: ./test/choltest.c
-	$(CC) $(CF) $(INCLUDE) -o $@ $< -DPTHREAD_POOL $(LIB)
-
 qrtest: ./test/qrtest.c
 	$(CC) $(CF) $(INCLUDE) -o $@ $<  $(LIB)
 
@@ -61,27 +61,14 @@ qrtest_write: ./test/qrtest.c
 qrtest_numa_data: ./test/qrtest.c
 	$(CC) $(CF) $(NUMA_FLAGS) $(INCLUDE) -o $@ $<  $(LIB_NUMA)
 
-lqtest: ./test/lqtest.c
-	$(CC) $(CF) $(INCLUDE) -o $@ $<  $(LIB)
-
 amdtest: ./test/AMDtest.c
 	$(CC) $(CF) $(INCLUDE) -o $@ $<  $(LIB)
 
 saveorder: ./test/save_reorder.c
 	$(CC) $(CF) $(INCLUDE) -o $@ $<  $(LIB)
 
-chol_saveorder: ./test/chol_save_order.c
-	$(CC) $(CF) $(INCLUDE) -o $@ $<  $(LIB)
-
 update: 
 	(cd src/qr; make)
 	- (rm qrtest)
 	(make qrtest)
-
-DATA_NAME= se
-test_lq: 
-	@echo $(DATA_NAME)
-	./lqtest_default /home/public/DATA_TEST/$(DATA_NAME)/$(DATA_NAME).mtx
-	./lqtest_amd /home/public/DATA_TEST/$(DATA_NAME)/$(DATA_NAME).mtx
-	./lqtest_metis /home/public/DATA_TEST/$(DATA_NAME)/$(DATA_NAME).mtx
 
