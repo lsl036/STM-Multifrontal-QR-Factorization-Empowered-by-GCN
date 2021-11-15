@@ -1,16 +1,4 @@
-/******************************************************************************
- * SPQR, Copyright 2008-2016 by Timothy A. Davis.
- * All Rights Reserved.
- * SPQR is available under alternate licenses, contact T. Davis for details.
- * Availability:
 
-    http://www.suitesparse.com
-
- * Used by permission.
- 
- * ChangeLog: Include some auxiliary interfaces of QR fac and add an extra 
-              Sparse LQ factorization interface.
- *****************************************************************************/
 /*******************************
  *         INCLUDE
  ******************************/ 

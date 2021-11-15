@@ -1,16 +1,3 @@
-/******************************************************************************
- * SPQR, Copyright 2008-2016 by Timothy A. Davis.
- * All Rights Reserved.
- * SPQR is available under alternate licenses, contact T. Davis for details.
- * Availability:
-
-    http://www.suitesparse.com
-
- * Used by permission.
- 
- * ChangeLog: Calling TPSM thread pool (thread NUMA affinity) to achieve 
-              parallel factorization.
- *****************************************************************************/
 
 #include"SparseQR.h"
 #include "SparseQR_internal.h"

@@ -1,16 +1,4 @@
-/******************************************************************************
- * SPQR, Copyright 2008-2016 by Timothy A. Davis.
- * All Rights Reserved.
- * SPQR is available under alternate licenses, contact T. Davis for details.
- * Availability:
 
-    http://www.suitesparse.com
-
- * Used by permission.
- 
- * ChangeLog: Merged a part of QR decomposition module functions, 
-              and Modified the selection of reordering method in qr_1colamd
- *****************************************************************************/
 /*******************************
  *         INCLUDE
  ******************************/ 

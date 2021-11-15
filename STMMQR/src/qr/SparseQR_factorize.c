@@ -1,18 +1,4 @@
-/******************************************************************************
- * SPQR, Copyright 2008-2016 by Timothy A. Davis.
- * All Rights Reserved.
- * SPQR is available under alternate licenses, contact T. Davis for details.
- * Availability:
 
-    http://www.suitesparse.com
-
- * Used by permission.
- 
- * ChangeLog: 1. Merged a part of QR numerical factorization functions, 
-              and implemented data affinity in get_Work.
-              2. Modified the parallel mode of the nodes in task tree 
-              (in qr_factorize).
- *****************************************************************************/
 #ifdef PRINT_TIME
 #include <sys/time.h>
 #endif

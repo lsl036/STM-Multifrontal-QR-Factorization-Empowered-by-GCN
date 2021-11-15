@@ -1,16 +1,3 @@
-/******************************************************************************
- * SPQR, Copyright 2008-2016 by Timothy A. Davis.
- * All Rights Reserved.
- * SPQR is available under alternate licenses, contact T. Davis for details.
- * Availability:
-
-    http://www.suitesparse.com
-
- * Used by permission.
- 
- * ChangeLog: Merged a part of QR symbolic analysis module functions, 
-              and adjusted the blocking parameters.
- *****************************************************************************/
 
 /*给定一个稀疏m×n矩阵a的非零模式，分析它以进行后续的数值分解。
     这个函数只作用于A的分布模式;它不需要实例化。*/
