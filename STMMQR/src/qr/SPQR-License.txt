@@ -1,3 +1,14 @@
+STMMQR, Copyright 2020-2021 by Hunan University.
+Author: Shengle Lin, Wangdong Yang, Minlu Dai.
+
+We adapted it from the code in SuiteSparse/SPQR (http://www.suitesparse.com). 
+We have made minor modifications to symbolic analysis,
+and mainly modified the parallel method of numerical factorization (SparseQR_multithreads.c).
+
+Note that this license is for the src/qr Module only.
+All src modules are licensed separately.
+------------------------------------------------------------------
+
 SPQR, Copyright 2008-2016 by Timothy A. Davis.
 All Rights Reserved.
 SPQR is available under alternate licenses, contact T. Davis for details.
@@ -35,4 +46,3 @@ SPQR License:
 Availability:
 
     http://www.suitesparse.com
-

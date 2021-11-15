@@ -1,0 +1,29 @@
+STMMQR/chol Module.  Copyright (C) 2019-2021, Hunan University.
+Author: Minlu Dai, Shengle Lin.
+
+This module is adapted from SuiteSparse's CHOLMOD/Cholesky module.
+We tailored the functionality and adjusted symbolic analysis to fit the factorization task.
+Contact authors for details.
+
+SuiteSparse website: http://www.suitesparse.com
+
+Note that this license is for the STMMQR/chol Module only.
+All src modules are licensed separately.
+
+
+--------------------------------------------------------------------------------
+
+
+This Module is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This Module is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this Module; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
