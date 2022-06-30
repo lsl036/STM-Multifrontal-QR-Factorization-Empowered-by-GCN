@@ -20,6 +20,22 @@ Part of the drawing data shown in the paper is placed in the ***Data*** director
 The complete code of optimal STM-Multifrontal QR is placed in the ***STMMQR*** directory.
 Directory ***GCN_classifier*** contains the code and data for training and validating our GCN classifier, our model is directly modified based on the template of ***PyG package***.
 
+## Reference
+Lin S, Yang W, Wang H, et al. STM-multifrontal QR: streaming task mapping multifrontal QR factorization empowered by GCN[C]//Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis. 2021: 1-14.
+
+DOI: https://dl.acm.org/doi/abs/10.1145/3458817.3476199
+
+### BibTeX citation
+```
+@inproceedings{lin2021stm,
+  title={STM-multifrontal QR: streaming task mapping multifrontal QR factorization empowered by GCN},
+  author={Lin, Shengle and Yang, Wangdong and Wang, Haotian and Tsai, Qinyun and Li, Kenli},
+  booktitle={Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
+  pages={1--14},
+  year={2021}
+}
+```
+
 ## Notice
 For details about operations on ***STMMQR*** and ***GCN_classifier***, please see **README** in their respective folders.
 
