@@ -85,7 +85,7 @@ class Net(torch.nn.Module):
         x2 = F.relu(self.conv2(x1, edge_index))
         x2 = F.dropout(x2, p=0.2, training=self.training)
 
-        x = torch.cat([x1, x2], dim=-1)
+        x = torch.cat([self.pool1(x1), self.pool2(x2)], dim=-1)
         x = gmp(x, batch)
         xe = exinfo
         x = torch.cat([x, xe], dim=-1)
