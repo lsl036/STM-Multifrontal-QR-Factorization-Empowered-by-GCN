@@ -41,5 +41,23 @@ For details about operations on ***STMMQR*** and ***GCN_classifier***, please se
 
 Please note that GCN and STM-MQR are **not really combined** due to the lack of accuracy of GCN automatic classifier and the extra cost of attributes generation. And we hope that our work can inspire more researchers to combine graph convolutional network with sparse matrices problems to form more practical and valuable work.
 
-Thank you very much!
+## Cite this work
+If this is helpful to you, you can cite:
+```
+@inproceedings{10.1145/3458817.3476199,
+author = {Lin, Shengle and Yang, Wangdong and Wang, Haotian and Tsai, Qinyun and Li, Kenli},
+title = {STM-multifrontal QR: streaming task mapping multifrontal QR factorization empowered by GCN},
+year = {2021},
+isbn = {9781450384421},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3458817.3476199},
+doi = {10.1145/3458817.3476199},
+articleno = {71},
+numpages = {14},
+keywords = {NUMA multicore architecture, graph convolutional network, multifrontal QR factorization, task mapping optimization, task stream processing},
+location = {St. Louis, Missouri},
+series = {SC '21}
+}
+```
 
